@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="IMAGES/love-removebg-preview.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For you, Cintaakuu Sayangggg</title>
+  <link rel="stylesheet" href="page4.css">
+</head>
+<body>
+  <!-- Custom Greeting -->
+  <div id="greeting" class="greeting-screen">
+    <h1>💖This playlist is made just for you💖</h1>
+    <p>For my love, enjoy our songs together 🎶</p>
+    <button id="enterBtn"><b>ENTER</b></button>
+  </div>
+
+  <div class="spotify-bg" id="spotify-bg"></div>
+
+  <div class="spotify-player hidden" id="player">
+    <div class="cd-container" id="cd-container">
+      <img id="album-art" src="images/song1.jpg" alt="Album Art">
+    </div>
+
+    <div class="song-info">
+      <h2 id="song-title">Love Song</h2>
+      <p id="song-artist">By Your Bae 💕</p>
+    </div>
+
+    <!-- Lyrics Mode -->
+    <div class="lyrics-box" id="lyrics-box">
+      <p id="lyrics">🎶 Lyrics will appear here 🎶</p>
+    </div>
+
+    <!-- Playlist -->
+    <div class="playlist" id="playlist"></div>
+
+    <!-- Progress bar -->
+    <div class="progress-container">
+      <span id="current-time">0:00</span>
+      <input type="range" id="progress" value="0" min="0" step="1">
+      <span id="duration">0:00</span>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button id="prev">⏮️</button>
+      <button id="play">▶️</button>
+      <button id="next">⏭️</button>
+    </div>
+
+    <!-- Volume -->
+    <div class="volume-control">
+      <label for="volume">🔊</label>
+      <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5">
+    </div>
+  </div>
+ 
+
+  <audio id="audio"></audio>
+
+  <script src="page4.js"></script>
+</body>
+</html>

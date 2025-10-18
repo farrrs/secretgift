@@ -1,0 +1,277 @@
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #ffe6f0, #ffd1e8);
+  display: flex;
+  font-family: 'Comic Neue', 'Quicksand', sans-serif;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scrapbook container */
+.scrapbook {
+  width: 95%;
+  max-width: 450px;
+  height: 70vh; /* fixed tinggi scrapbook */
+  background: #fff0f6;
+  border: 4px dashed #ff99cc;
+  border-radius: 18px;
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+  position: relative;
+  padding: 15px;
+  overflow: hidden; /* biar page tetap di dalam container */
+}
+
+/* Halaman */
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transform: rotateY(90deg);
+  transform-origin: left;
+  text-align: center;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  padding: 20px;
+  box-sizing: border-box;
+  backface-visibility: hidden;
+
+  /* ✨ selalu bisa scroll */
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* Halaman aktif */
+.page.active {
+  opacity: 1;
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+/* Scrollbar cantik */
+.page::-webkit-scrollbar {
+  width: 8px;
+}
+.page::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+.page::-webkit-scrollbar-thumb {
+  background: rgba(255, 153, 204, 0.6);
+  border-radius: 10px;
+}
+.page::-webkit-scrollbar-thumb:hover {
+  background: #ff4d88;
+}
+
+/* Heading */
+h2 {
+  color: #ff3399;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+/* Text */
+p {
+  font-size: 1,5rem;
+  color: #333;
+  line-height: 1.5;
+  background: rgba(255, 204, 229, 0.5);
+  padding: 15px;
+  border-radius: 10px;
+  margin: 15px 0;
+  word-wrap: break-word;
+}
+
+/* Stiker */
+.sticker img {
+  width: 120px;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin: 10px auto 0;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Indikator halaman */
+.page-indicator {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 0.9rem;
+  color: #555;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+/* Tombol navigasi scrapbook */
+/* Controls ikut scroll */
+.controls {
+  margin-top: 20px;
+  text-align: center;
+  position: relative; /* biar ngikut alur scroll */
+}
+
+.controls button {
+  background: #ff99cc;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 8px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background 0.3s ease;
+}
+
+.controls button:hover {
+  background: #ff42a1;
+  color: #fff;
+}
+
+
+button:hover:not(:disabled) {
+  transform: scale(1.1) rotate(-2deg);
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  box-shadow: 0 6px 14px rgba(255, 0, 100, 0.4);
+}
+
+button:disabled {
+  background: #c5bdbf;
+  color: #aaa;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Tombol Next ke halaman lain */
+.next-section {
+  margin-top: 100px;
+  text-align: center;
+  z-index: 50;
+}
+
+.next-link {
+  display: inline-block;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, #ff8fb1, #ff6f91);
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.25);
+}
+
+.next-link:hover {
+  background: linear-gradient(135deg, #ff6f91, #ff3d68);
+  transform: scale(1.08);
+  box-shadow: 0 7px 14px rgba(0,0,0,0.35);
+}
+
+/* Background hati jatuh */
+.hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.heart {
+  position: absolute;
+  top: -20px;
+  color: #ff4d88;
+  font-size: 18px;
+  animation: fall linear forwards;
+  opacity: 0.8;
+}
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Pesan rahasia */
+.hover-text {
+  transition: transform 0.2s, color 0.2s;
+  cursor: pointer;
+}
+.hover-text:hover {
+  transform: scale(1.1);
+  color: #ff4d88;
+}
+.secret {
+  margin-top: 10px;
+  padding: 10px 15px;
+  background: #ffb6c1;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: bold;
+}
+.hidden-message {
+  margin-top: 10px;
+  display: none;
+  font-size: 1rem;
+  color: #ff4d88;
+  font-weight: bold;
+}
+
+/* Confetti canvas */
+#confetti {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Responsif HP */
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  p {
+    font-size: 1,0rem;
+  }
+
+  .sticker img {
+    width: 90px;
+  }
+
+  button {
+    padding: 10px 14px;
+    font-size: 1rem;
+  }
+}
+.scrapbook-title {
+  font-size: 2rem;
+  color: #ff4d88;
+  text-align: center;
+  margin: 20px 0 15px;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 2px 2px 6px rgba(255, 100, 150, 0.3);
+  animation: floatTitle 3s ease-in-out infinite;
+}
+
+/* animasi judul biar goyang manis */
+@keyframes floatTitle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}

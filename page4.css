@@ -1,0 +1,198 @@
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Greeting */
+.greeting-screen {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+}
+
+.greeting-screen h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.greeting-screen button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background: #1DB954;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.greeting-screen button:hover {
+  background: #17a44a;
+}
+
+/* Background dinamis */
+.spotify-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, #121212, #1e1e1e);
+  transition: background 2s ease;
+}
+
+/* Player */
+.spotify-player {
+  text-align: center;
+  background: rgba(30,30,30,0.9);
+  padding: 25px;
+  border-radius: 20px;
+  width: 360px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+}
+
+/* CD */
+.cd-container {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 8px solid #1DB954;
+  animation: spin 12s linear infinite;
+  animation-play-state: paused;
+  transition: transform 0.3s ease;
+}
+.cd-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Info */
+.song-info h2 {
+  margin: 0;
+  font-size: 18px;
+}
+.song-info p {
+  margin: 5px 0;
+  color: #aaa;
+}
+
+/* Lyrics */
+.lyrics-box {
+  margin: 15px 0;
+  height: 60px;
+  overflow: hidden;
+  font-size: 14px;
+  color: #fff;
+}
+#lyrics {
+  animation: typing 4s steps(40, end) infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #1DB954;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Playlist */
+.playlist {
+  margin: 15px 0;
+  text-align: left;
+  max-height: 100px;
+  overflow-y: auto;
+}
+.playlist button {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 5px;
+  border: none;
+  border-radius: 10px;
+  background: #222;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.playlist button:hover {
+  background: #1DB954;
+}
+
+/* Progress */
+.progress-container {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+.progress-container span {
+  font-size: 12px;
+  width: 40px;
+}
+#progress {
+  flex: 1;
+  margin: 0 5px;
+  cursor: pointer;
+  appearance: none;
+  background: #555;
+  height: 4px;
+  border-radius: 2px;
+}
+#progress::-webkit-slider-thumb {
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background: #1DB954;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Controls */
+.controls button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 26px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.controls button:hover {
+  color: #1DB954;
+  transform: scale(1.2);
+}
+
+/* Volume */
+.volume-control {
+  margin-top: 10px;
+}
+.volume-control input {
+  width: 120px;
+}

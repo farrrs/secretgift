@@ -1,0 +1,428 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <link rel="icon" type="image/png" href="IMAGES/love-removebg-preview.png">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For you, Cintaakuu Sayangggg</title>
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- CSS eksternal -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<script>
+  let currentSlide = 0;
+
+  function moveSlide(step) {
+    const slides = document.querySelectorAll(".slides img");
+    currentSlide = (currentSlide + step + slides.length) % slides.length;
+    document.querySelector(".slides").style.transform = 
+      `translateX(-${currentSlide * 100}%)`;
+  }
+</script>
+<!-- Background Music -->
+<audio id="bg-music" autoplay loop>
+  <source src="MUSIC/backsound.mp3" type="audio/mpeg">
+  Browser kamu tidak mendukung audio.
+</audio>
+
+<script src="bg-music.js"></script>
+<script src="page2.js"></script>
+<body>
+  <div class="wrap">
+    <!-- HERO -->
+    <section class="hero card">
+      <h1>Untuk Sayanggkuu Tercintaa</h1>
+      <p>Aku bersyukur bangett memilikimu sayangg, duniaku sangat berwarna jika bersamamu xixixixi </p>
+      <div class="chip">From: den bagus mu, hehehe</div>
+      <div aria-hidden="true" class="floating-hearts">
+        <span style="left:5%; --i:1"></span>
+        <span style="left:12%; --i:3"></span>
+        <span style="left:20%; --i:2"></span>
+        <span style="left:28%; --i:4"></span>
+        <span style="left:35%; --i:6"></span>
+        <span style="left:44%; --i:5"></span>
+        <span style="left:52%; --i:2"></span>
+        <span style="left:61%; --i:7"></span>
+        <span style="left:70%; --i:3"></span>
+        <span style="left:78%; --i:5"></span>
+        <span style="left:86%; --i:6"></span>
+        <span style="left:93%; --i:1"></span>
+      </div>
+    </section>
+
+    <!-- SURAT CINTA -->
+    <h2 class="heading">Surat Cinta Untukmu</h2>
+    <p class="sub">alooo sayangggg, di bacaa yaa</p>
+    <article class="card letter">
+      <h3>Dear Sayanggkuuu, Saskia Meutya Ni'ammah</h3>
+      <p>to be honest, aku ga tau harus mulai cerpen panjang ini darimana ya sayanggg hihi!!
+i wanna hold ur face baby, aku mau ucapin selamat hari lahir dan selamat bertumbuh jauh lebih baik sayanggkuu cintaakuuu, panjang umur, a wish for u on ur birthday, whatever u ask may u receive, whatever u seek may u find, whatever u wish may it be fulfilled on ur birthday and together, i hope u will walk on this journey knowing that u belong babe, i hope even if things sometime do not go ur way u will stop trying, u will not give up on urself and on ur thoughest days, i hope u will reminding your self of this word "u deserve better, kamu layak dicintai dan dirayakan dalam hal apapun!! aku sangat berharap dan berdoa untuk kamu, mudah mudahan kamu terus diberi kesehatan, berkelimpahan, dikelilingi orang orang yang baik dan bermanfaat, diberi kemudahan ditengah rasa sakitmu, rasa skripisanmu hihi, rasa sulitmu, dan aku selalu berdoa semoga hatimu diberi kelapangan dan kesabaran atas hal apapun yang memberatkanmu, may allah grant u what ur heart truly desire, may allah make everything u want good for u, so that may accept all ur prayers and wishes babe
+thank u for accepting me with all my🤍🤍🤍.</p>
+      <p>semoga pesan kecil ini jadi pengingat bahwa kamu dicintai, dilihat, dan dihargai. hari ini, esok, dan seterusnya ya sayanggkuu cintaakuuu 🤍</p>
+      <p><b>I LOVE YOUU MOREE AND MOREE SAYANGGG, ALWAYSS</b></p>
+      <p>Dengan cinta, <b>farrr</b></p>
+    </article>
+
+    <!-- GALERI -->
+    <h2 class="heading">Album Kenangan Kita</h2>
+    <p class="sub">lucuu kan tayanggg</p>
+    <!-- Carousel Foto -->
+<div class="carousel">
+  <div class="carousel-track">
+    <img src="IMAGES/IMG_1302.JPG" alt="Foto 1">
+    <img src="IMAGES/IMG_1362.jpeg" alt="Foto 2">
+    <img src="IMAGES/IMG_1568.jpeg" alt="Foto 3">
+    <img src="IMAGES/IMG_1867.jpeg" alt="Foto 4">
+  </div>
+</div>
+<!-- Dot navigation -->
+<div class="carousel-dots"></div>
+
+<script>
+  let currentIndex = 0;
+  let autoSlide;
+  let startX = 0;
+  let isDragging = false;
+
+  function updateCarousel() {
+    const track = document.querySelector(".carousel-track");
+    const items = document.querySelectorAll(".carousel-track img");
+    const dots = document.querySelectorAll(".dot");
+
+    // geser track agar foto aktif di tengah
+    const offset = currentIndex * (100 / 3) - (100 / 3); 
+    track.style.transform = `translateX(-${offset}%)`;
+
+    // update class active foto
+    items.forEach(img => img.classList.remove("active"));
+    items[currentIndex].classList.add("active");
+
+    // update dot
+    dots.forEach(dot => dot.classList.remove("active"));
+    dots[currentIndex].classList.add("active");
+  }
+
+  function moveSlide(step) {
+    const items = document.querySelectorAll(".carousel-track img");
+    currentIndex = (currentIndex + step + items.length) % items.length;
+    updateCarousel();
+    resetAutoSlide();
+  }
+
+  function goToSlide(index) {
+    currentIndex = index;
+    updateCarousel();
+    resetAutoSlide();
+  }
+
+  function startAutoSlide() {
+    autoSlide = setInterval(() => {
+      moveSlide(1);
+    }, 3000);
+  }
+
+  function resetAutoSlide() {
+    clearInterval(autoSlide);
+    startAutoSlide();
+  }
+
+  // Tambahkan event listener untuk swipe
+  function initSwipe() {
+    const track = document.querySelector(".carousel-track");
+
+    track.addEventListener("touchstart", (e) => {
+      startX = e.touches[0].clientX;
+      isDragging = true;
+    });
+
+    track.addEventListener("touchend", (e) => {
+      if (!isDragging) return;
+      let endX = e.changedTouches[0].clientX;
+      if (startX - endX > 50) {
+        moveSlide(1); // swipe kiri → next
+      } else if (endX - startX > 50) {
+        moveSlide(-1); // swipe kanan → prev
+      }
+      isDragging = false;
+    });
+
+    // drag dengan mouse (opsional)
+    track.addEventListener("mousedown", (e) => {
+      startX = e.clientX;
+      isDragging = true;
+    });
+
+    track.addEventListener("mouseup", (e) => {
+      if (!isDragging) return;
+      let endX = e.clientX;
+      if (startX - endX > 50) {
+        moveSlide(1);
+      } else if (endX - startX > 50) {
+        moveSlide(-1);
+      }
+      isDragging = false;
+    });
+  }
+
+  window.onload = () => {
+    const dotsContainer = document.querySelector(".carousel-dots");
+    const items = document.querySelectorAll(".carousel-track img");
+
+    // bikin dot sesuai jumlah foto
+    items.forEach((_, i) => {
+      const dot = document.createElement("span");
+      dot.classList.add("dot");
+      dot.addEventListener("click", () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    updateCarousel();
+    startAutoSlide();
+    initSwipe(); // aktifkan swipe
+  };
+</script>
+<!-- Tombol Kejutan Video -->
+<div class="video-surprise">
+  <button onclick="showVideo()"><b>DI PENCET YA SAYANGG</b></button>
+</div>
+
+<!-- Popup Video -->
+<div id="video-popup" class="popup">
+  <div class="popup-content video-popup-content">
+    <span class="close-btn" onclick="closeVideo()">&times;</span>
+    <h3><b>🤍 Dilihat Sampe Selesai ya Sayanggg 🤍</b></h3>
+    <video id="surprise-video" width="300" controls>
+      <source src="IMAGES/kado.mp4" type="video/mp4">
+      Browser kamu tidak mendukung video.
+    </video>
+  </div>
+</div>
+<script>
+function showVideo() {
+  document.getElementById("video-popup").style.display = "flex";
+  document.getElementById("surprise-video").play();
+}
+
+function closeVideo() {
+  document.getElementById("video-popup").style.display = "none";
+  document.getElementById("surprise-video").pause();
+  document.getElementById("surprise-video").currentTime = 0;
+}
+</script>
+
+
+    <!-- TIMELINE -->
+    <h2 class="heading">Perjalanan Cinta Kita</h2>
+    <div class="card timeline">
+      <div class="event">
+        <div class="date">Pertama Kenal — 28 Oktober 2024</div>
+        <div>Hari di mana aku sadar, dunia punya warna baru.</div>
+      </div>
+      <div class="event">
+        <div class="date">Mulai Jadian — 14 Februari 2025</div>
+        <div>Kopi dingin, tangan hangat, dan janji-janji kecil.</div>
+      </div>
+      <div class="event">
+        <div class="date">Pertama Bertemu — 28 Februari 2025</div>
+        <div>Kita belajar bahwa rumah bisa juga berarti "kamu".</div>
+      </div>
+    </div>
+
+    <!-- 10 HAL -->
+    <h2 class="heading">10 Hal yang Aku Suka dari Kamu</h2>
+    <div class="grid">
+      <div class="love-item"><b>01.</b> Caramu mendengarkan tanpa menghakimi.</div>
+      <div class="love-item"><b>02.</b> Tawa yang menular dan bikin suasana ringan.</div>
+      <div class="love-item"><b>03.</b> Kamu selalu ingat detail kecil tentangku.</div>
+      <div class="love-item"><b>04.</b> Sabar dan penuh empati.</div>
+      <div class="love-item"><b>05.</b> Mata yang berkilau saat bercerita.</div>
+      <div class="love-item"><b>06.</b> Keberanianmu mengejar mimpi.</div>
+      <div class="love-item"><b>07.</b> Pelukan yang terasa aman dan nyaman.</div>
+      <div class="love-item"><b>08.</b> Cara kamu support orang-orang di sekitarmu.</div>
+      <div class="love-item"><b>09.</b> Kejujuran yang hangat, bukan menyakitkan.</div>
+      <div class="love-item"><b>10.</b> Kamu—seluruhnya, apa adanya. 🤍</div>
+    </div>
+
+    <!-- OPEN WHEN -->
+    <h2 class="heading">Buka Saat kamu...</h2>
+    <div class="open-when">
+      <article class="ow-card">
+        <header>📩 Sedih</header>
+        <label for="ow1">Klik untuk baca</label>
+        <input id="ow1" type="checkbox" />
+        <div class="body">tetap semangat ya sayangku cintaku. seberat apapun masalah yang kamu jalanin sekarang, walaupun kamu gabisa ceritain ke aku gimana capeknya kamu, apa yang kamu alami, kamu harus tetep semangat. aku tau kamu anak hebat, anak kuat, walaupun kadang kamu dibikin sakit sama suasana rumahmu kamu harus kuat. aku bakal selalu ada disampingmu selama kamu butuh aku, bakal dengerin semua ceritamu, lelah kesalmu, aku disini. aku mungkin belum bisa bantu banyak banyak, aku mungkin belum bisa bantu kamu dalam ngasih saran atau datangin kamu buat peluk kamu. aku cuman bisa dengarin kamu cerita dari jauh, dengarin keluh kesahmu dari jauh, temanin kamu dari jauh. pacarku hebat terlepas keluarga mu gimana, kamu gimana, lingkungan mu gimana, aku tetap sayang sama kamu. selamanyaa, love u</div>
+      </article>
+      <article class="ow-card">
+        <header>📩 Rindu</header>
+        <label for="ow2">Klik untuk baca</label>
+        <input id="ow2" type="checkbox" />
+        <div class="body">i wanna tell u something.aku sayang banget sama kamu.kamu org yg aku sayanggin sedalem ini, kalau ada alat ukur kebahagian aku pasti org paling bahagia yg bisa sama kamu.yg bisa milikkin kamu, kamu itu is my highest level of happines, satu hal yg kamu harus tau that i loveee u so muchh!!just wanna say that im lucky to have u thnkyou, uda mau terima semua kekuranggan kelebihhan aku i lovee u just u are, gaperlu jadi org lain yaa buat bikin aku happy,jadi diri kamu sendiri yaa cantik itu lebih bikin aku happy maacci sayang uda selalu sabar ngadeppin sikap aku yg kadang bikin kamu kesel atau marah aku bakal berusaha buat lebih baik lagi yaa.aku gakan pernah berenti bersyukur karna uda dapet cewe sebaik secantik and setulus kamu.sama aku teros ya sayangku!i loveee u babe from my deepest heart, kamu tau nda sayangg? aku tuh lagi rindu banget sama kamu, kayak missing puzzle piece yang belum ketemu. amu bikin hidupku lebih colorful, seperti rainbow after the rain. aku sayang kamu lebih dari anything else di dunia</div>
+      </article>
+      <article class="ow-card">
+        <header>📩 Capee</header>
+        <label for="ow3">Klik untuk baca</label>
+        <input id="ow3" type="checkbox" />
+        <div class="body">ututuuuuu capee bangett yaa sayangg, semangat yaa sayangkuu, aku tau kamu capee tapi harus terus dipaksa kuat setiap harinya, sabar ya sayang mungkin proses kamu saat ini jauh berbeda dari orang lain, it's okayyy gaada masalah, semua berjalan di jalan masing masing, jangan suka samain pencapaian kamu sama orang, gaada yang terlalu cepat atau terlalu lambat, semua ada prosesnya, aku bangga banget sama semua proses yang udah kamu lalui, bahkan di saat saat terberat kamu, kamu tetap berusaha untuk melewatinya, apapun keadaan kamu diluar sana, tolong jadikan aku tempat pulang kamu ya, aku bakal support kamu sampe berhasil, i'm proud of u and u should proud of yourself too sayangggg</div>
+      </article>
+    </div>
+<!-- Kalender Ulang Tahun -->
+<div class="calendar">
+  <h2>Kalender - Oktober</h2>
+  <h3>bulan dimana seseorang yang paling spesial di hidupku lahir</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Min</th>
+        <th>Sen</th>
+        <th>Sel</th>
+        <th>Rab</th>
+        <th>Kam</th>
+        <th>Jum</th>
+        <th>Sab</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td></td><td></td><td></td><td class="day">1</td><td class="day">2</td><td class="day">3</td><td class="day">4</td>
+      </tr>
+      <tr>
+        <td class="day">5</td><td class="day">6</td><td class="day">7</td><td class="day">8</td><td class="day">9</td><td class="day">10</td><td class="day">11</td>
+      </tr>
+      <tr>
+        <td class="day">12</td><td class="day">13</td><td class="day">14</td><td class="day">15</td><td class="day">16</td><td class="day">17</td><td class="day">18</td>
+      </tr>
+      <tr>
+        <td class="day">19</td><td class="day">20</td><td class="day">21</td><td class="day">22</td> 
+        <!-- Tanggal ulang tahun -->
+        <td class="day birthday" onclick="showBirthdayMsg()">23 ❤️</td><td class="day">24</td>
+        <td class="day">25</td>
+      </tr>
+      <tr>
+        <td class="day">26</td><td class="day">27</td><td class="day">28</td><td class="day">29</td><td class="day">30</td><td class="day">31</td><td></td>
+      </tr>
+    </tbody>
+  </table> 
+</div>
+
+<!-- Popup Ucapan -->
+<div id="birthday-popup" class="popup">
+  <div class="popup-content">
+    <span class="close-btn" onclick="closePopup()">&times;</span>
+    <h3>💖 Its Your Birthday Sayanggg 💖</h3>
+    <p>Semoga di hari spesialmu ini penuh cinta, kebahagiaan, dan kejutan manis dan selalu diiringi kebaikan, Semoga kamu selalu diberi kesehatan ya sayangg, di kuatkan dalam segala hal apapun, i love you moree and moree sayanggg 🎂💕</p>
+  </div>
+</div>
+
+<!-- Canvas Confetti -->
+<canvas id="confetti-canvas"></canvas>
+<script>
+// Fungsi Popup
+function showBirthdayMsg() {
+  document.getElementById("birthday-popup").style.display = "flex";
+  startConfetti();
+}
+function closePopup() {
+  document.getElementById("birthday-popup").style.display = "none";
+  stopConfetti();
+}
+
+// Confetti
+const confettiCanvas = document.getElementById('confetti-canvas');
+const ctx = confettiCanvas.getContext('2d');
+let confettiPieces = [];
+let confettiActive = false;
+
+function resizeCanvas() {
+  confettiCanvas.width = window.innerWidth;
+  confettiCanvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+function randomColor() {
+  const colors = ['#ff4d6d','#ffb6c1','#ffd700','#87cefa','#98fb98','#ffa07a'];
+  return colors[Math.floor(Math.random()*colors.length)];
+}
+
+function createConfetti() {
+  return {
+    x: Math.random() * confettiCanvas.width,
+    y: Math.random() * confettiCanvas.height - confettiCanvas.height,
+    r: Math.random() * 6 + 4,
+    d: Math.random() * 0.5 + 0.5,
+    color: randomColor(),
+    tilt: Math.random() * 10 - 10,
+    tiltAngleIncrement: Math.random() * 0.07 + 0.05,
+    tiltAngle: 0
+  };
+}
+
+function drawConfetti(p) {
+  ctx.beginPath();
+  ctx.lineWidth = p.r;
+  ctx.strokeStyle = p.color;
+  ctx.moveTo(p.x + p.tilt + p.r, p.y);
+  ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.r);
+  ctx.stroke();
+}
+
+function updateConfetti(p) {
+  p.tiltAngle += p.tiltAngleIncrement;
+  p.y += (Math.cos(p.d) + 3 + p.r/2)/2;
+  p.x += Math.sin(p.d);
+  p.tilt = Math.sin(p.tiltAngle) * 15;
+  if (p.y > confettiCanvas.height) {
+    p.x = Math.random() * confettiCanvas.width;
+    p.y = -20;
+  }
+}
+
+function startConfetti() {
+  confettiPieces = Array.from({length: 150}, createConfetti);
+  confettiActive = true;
+  renderConfetti();
+}
+
+function stopConfetti() {
+  confettiActive = false;
+}
+
+function renderConfetti() {
+  if (!confettiActive) return;
+  ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+  confettiPieces.forEach((p, i) => {
+    drawConfetti(p);
+    updateConfetti(p);
+  });
+  requestAnimationFrame(renderConfetti);
+}
+</script>
+
+<script>
+function showBirthdayMsg() {
+  document.getElementById("birthday-popup").style.display = "flex";
+}
+function closePopup() {
+  document.getElementById("birthday-popup").style.display = "none";
+}
+</script>
+
+<!-- Tombol Baru -->
+<button class="hug-btn" onclick="goToPage3()">NEXT SAYANGG</button>
+
+<script>
+  function goToPage3() {
+    window.location.href = "page3.html"; 
+  }
+</script>
+
+</a>
+
+    <footer>
+      Dibuat dengan 🤍 oleh farrr — di hatimu, selamanya
+    </footer>
+  </div>
+</body>
+</html>

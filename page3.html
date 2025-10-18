@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <link rel="icon" type="image/png" href="IMAGES/love-removebg-preview.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For you, Cintaakuu Sayangggg</title>
+  <link rel="stylesheet" href="page3.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<!-- Audio untuk bunyi kejutan -->
+<audio id="pop-sound" src="MUSIC/1.mp3" preload="auto"></audio>
+<!-- Background Music -->
+<audio id="bg-music" autoplay loop>
+  <source src="MUSIC/backsound.mp3" type="audio/mpeg">
+  Browser kamu tidak mendukung audio.
+</audio>
+
+<script src="bg-music.js"></script>
+
+<body>
+  <div class="bokeh"></div>
+
+  <div class="container">
+    <h1 class="title">Di Baca ya Sayanggg🤍</h1>
+
+    <!-- Surat -->
+    <div class="letter">
+      <p>
+        Hai cantikkuuuu happy birthday yaa. Hari ini adalah hari yang paling aku tunggu karena aku bisa merayakan kebahagiaan seseorang yang berarti segalanya bagiku.
+Kamu adalah alasan tersenyum setiap hari, alasan aku selalu merasa kuat saat dunia terasa berat. Semoga hari ini memberikanmu banyak kebahagiaan, seperti kamu memberikan kebahagiaan dalam hidupku setiap saat. Dengan usiamu yang sekarang semoga kepribadian mu jauh lebih baik daripada yg sebelum nya ya, menjadi wanita tangguh, aku bingung harus mendeskripsikan gimana Iagi tentang dirimu pokok nya jadilah wanita yang berguna bagi sesama ya cantikkk maaf klo kamu harus ketemu cowo yang kaya aku, yang jauh dari kata sempurna yang sering bikin kamu marah, bikin kamu nangis, kecewa dengan sikap aku yang kaya gini aku minta maaf yaa. I have no better gift to give you on this special day than my endless love. May almighty Allah grant you good health and sustenance as you add to your age!
+<b> Sekali lagi HAPPY BIRTHDAY SAYANGGKUUU I Loveyou more more moreeeeeee, semoga jalan kita berdua dipermudahkan Allah ya
+Aamiin Allahumma Aamiin</b>
+
+
+      </p>
+    </div>
+
+      <!-- Tombol kejutan -->
+<button class="text-surprise-btn" onclick="showRomanticText()">DIPENCET SAYANGG</button>
+
+<!-- Container untuk teks romantis -->
+<div id="romantic-text"></div>
+<script>
+  function showRomanticText() {
+    const messages = [
+      "💖 kamu adalah semesta kecilku, tempat di mana aku selalu ingin pulang 😘✨",
+      "🌹 hidupku lebih indah sejak ada kamu, sayanggkuu 💕",
+      "😍 senyummu adalah obat terbaik untuk hariku 🌈",
+      "✨ kalau ada 1000 alasan untuk bahagia, kamu adalah 1001-nya 💌"
+    ];
+
+    const romanticText = document.getElementById("romantic-text");
+    const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+
+    romanticText.innerHTML = randomMsg;
+    romanticText.classList.add("show");
+
+    // Bunyi pop saat muncul
+    document.getElementById("pop-sound").play();
+
+    // otomatis hilang setelah 5 detik
+    setTimeout(() => {
+      romanticText.classList.remove("show");
+      romanticText.innerHTML = "";
+    }, 5000);
+  }
+</script>
+
+<div class="response-box">
+  <h3>Pesan Untuk Aku Sayangg💌</h3>
+  <textarea id="response" placeholder="ketik pesan buat aku ya sayangg"></textarea>
+  
+  <!-- Tombol WhatsApp biasa -->
+  <div class="btn-container">
+  <button class="send-btn" onclick="sendMessage()">Kirim Pesan</button>
+</div>
+
+</div>
+     <a href="scrapbok.html" class="next-btn"><b>Next</b></a>
+</script>
+
+</script>
+
+<script>
+function sendMessage() {
+      let pesan = document.getElementById("response").value;
+      if (pesan.trim() === "") {
+        alert("Tulis dulu pesannya ya sayang 🤍");
+        return;
+      }
+      let nomor = "6285330929161"; // ganti dengan nomor WhatsApp kamu
+      let url = "https://wa.me/" + nomor + "?text=" + encodeURIComponent(pesan);
+      window.open(url, "_blank");
+    }
+</script>
+<p>
+  .
+</p>
+
+ <footer>
+      Dibuat dengan 🤍 oleh <b>farrr</b> — di hatimu, selamanya
+    </footer>
+</body>
+</html>
